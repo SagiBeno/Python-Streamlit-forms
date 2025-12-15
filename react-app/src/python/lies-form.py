@@ -12,7 +12,7 @@ with st.form(key='my-form'):
     with col2:
         st.subheader('Party')
         party_name = st.selectbox('Name', ['Fidesz', 'Tisza', 'DK', 'Momentum', 'LMP', 'MSZP', 'Mi Hazánk'])
-        color = st.color_picker('Color')
+        color = st.color_picker('Color', value='#FF6A00')
 
     col3, col4 = st.columns(2)
     with col3:
@@ -26,7 +26,19 @@ with st.form(key='my-form'):
     submit = st.form_submit_button()
 
     if submit:
-        st.success('OK')
+        if consent and len(politician_name) >= 1:
+            form_data_dict = {
+                'politician_name': politician_name,
+                'age': age,
+                'party_name': party_name,
+                'color': color,
+                'lie_date': lie_date,
+                'lie': lie
+            }
+            print(f'form_data_dict: {form_data_dict}')
+            st.success('OK')
+        else:
+            st.error('Please fill out the form fields!')
     else:
         st.error('Please fill out the form fields!')
 
