@@ -4,10 +4,10 @@ export default async function handler(req, res) {
 
     if (method == 'POST') {
         const body = req?.body;
-        // TODO - Process form data
+        // Process form data
         console.log('Body: ', body);
-        return res.sendStatus(201);
+        return res.status(201).json({ok: true});
     } else {
-        return res.sendStatus(405);
+        return res.status(405).json({ok: false});
     }
 }

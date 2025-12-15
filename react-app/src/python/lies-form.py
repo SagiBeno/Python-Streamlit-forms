@@ -41,6 +41,10 @@ with st.form(key='my-form'):
             res = requests.post(url='https://python-streamlit-forms.vercel.app/api/lies', data=form_data_dict)
             print(res)
 
+            print(f'res.ok: {res.ok}')
+            print(f'res.status_code: {res.status_code}')
+            print(f'res.text: {res.text}')
+
             st.success('OK')
         else:
             st.error('Please fill out the form fields!')
